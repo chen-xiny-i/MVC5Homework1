@@ -52,8 +52,22 @@ namespace Homework1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.客戶聯絡人.Add(客戶聯絡人);
-                db.SaveChanges();
+                客戶資料 客戶資料 = db.客戶資料.Find(客戶聯絡人.客戶Id);
+                if (客戶資料 == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (客戶資料.客戶聯絡人.FirstOrDefault(x => x.Email == 客戶聯絡人.Email) != null)
+                {
+
+                    db.客戶聯絡人.Add(客戶聯絡人);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("客戶聯絡人Email重複");
+                }
                 return RedirectToAction("Index");
             }
 

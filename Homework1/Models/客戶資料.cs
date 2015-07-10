@@ -34,6 +34,7 @@ namespace Homework1.Models
         [Required]
         [RegularExpression(@"[A-Za-z0-9_.]+@[A-Za-z0-9_.]+", ErrorMessage = "Email格式錯誤")]
         public string Email { get; set; }
+        [Required]
         public bool 是否已刪除 { get; set; }
 
         public virtual ICollection<客戶銀行資訊> 客戶銀行資訊 { get; set; }
