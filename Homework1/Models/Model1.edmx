@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="客戶資料Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="客戶資料Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="principal_id" Nullable="false" Type="int" />
+          <Property Name="diagram_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
@@ -19,38 +19,38 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="客戶名稱" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="統一編號" Type="char" MaxLength="8" Nullable="false" />
-          <Property Name="電話" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="傳真" Type="nvarchar" MaxLength="50" />
-          <Property Name="地址" Type="nvarchar" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" MaxLength="250" />
-          <Property Name="是否已刪除" Type="bit" Nullable="false" />
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="客戶名稱" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="統一編號" Nullable="false" MaxLength="8" Type="char" />
+          <Property Name="電話" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="傳真" MaxLength="50" Type="nvarchar" />
+          <Property Name="地址" MaxLength="100" Type="nvarchar" />
+          <Property Name="Email" MaxLength="250" Type="nvarchar" />
+          <Property Name="是否已刪除" Nullable="false" Type="bit" />
         </EntityType>
         <EntityType Name="客戶銀行資訊">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="客戶Id" Type="int" Nullable="false" />
-          <Property Name="銀行名稱" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="銀行代碼" Type="int" Nullable="false" />
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="客戶Id" Nullable="false" Type="int" />
+          <Property Name="銀行名稱" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="銀行代碼" Nullable="false" Type="int" />
           <Property Name="分行代碼" Type="int" />
-          <Property Name="帳戶名稱" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="帳戶號碼" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="帳戶名稱" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="帳戶號碼" Nullable="false" MaxLength="20" Type="nvarchar" />
         </EntityType>
         <EntityType Name="客戶聯絡人">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="客戶Id" Type="int" Nullable="false" />
-          <Property Name="職稱" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="姓名" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="手機" Type="nvarchar" MaxLength="50" />
-          <Property Name="電話" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="客戶Id" Nullable="false" Type="int" />
+          <Property Name="職稱" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="姓名" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="Email" Nullable="false" MaxLength="250" Type="nvarchar" />
+          <Property Name="手機" MaxLength="50" Type="nvarchar" />
+          <Property Name="電話" MaxLength="50" Type="nvarchar" />
         </EntityType>
         <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'C:\USERS\CAT\DOCUMENTS\VISUAL STUDIO 2013\PROJECTS\HOMEWORK1\HOMEWORK1\APP_DATA\客戶資料.MDF.dbo.ViewCustomerAmtReport' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
@@ -58,13 +58,13 @@
           <Key>
             <PropertyRef Name="客戶名稱" />
           </Key>
-          <Property Name="客戶名稱" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="客戶名稱" Nullable="false" MaxLength="50" Type="nvarchar" />
           <Property Name="聯絡人數量" Type="int" />
           <Property Name="銀行帳戶數量" Type="int" />
         </EntityType>
         <Association Name="FK_客戶銀行資訊_客戶資料">
-          <End Role="客戶資料" Type="Self.客戶資料" Multiplicity="1" />
-          <End Role="客戶銀行資訊" Type="Self.客戶銀行資訊" Multiplicity="*" />
+          <End Type="Self.客戶資料" Multiplicity="1" Role="客戶資料" />
+          <End Type="Self.客戶銀行資訊" Multiplicity="*" Role="客戶銀行資訊" />
           <ReferentialConstraint>
             <Principal Role="客戶資料">
               <PropertyRef Name="Id" />
@@ -75,8 +75,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_客戶聯絡人_客戶資料">
-          <End Role="客戶資料" Type="Self.客戶資料" Multiplicity="1" />
-          <End Role="客戶聯絡人" Type="Self.客戶聯絡人" Multiplicity="*" />
+          <End Type="Self.客戶資料" Multiplicity="1" Role="客戶資料" />
+          <End Type="Self.客戶聯絡人" Multiplicity="*" Role="客戶聯絡人" />
           <ReferentialConstraint>
             <Principal Role="客戶資料">
               <PropertyRef Name="Id" />
@@ -99,12 +99,12 @@
     FROM [dbo].[ViewCustomerAmtReport] AS [ViewCustomerAmtReport]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_客戶銀行資訊_客戶資料" Association="Self.FK_客戶銀行資訊_客戶資料">
-            <End Role="客戶資料" EntitySet="客戶資料" />
-            <End Role="客戶銀行資訊" EntitySet="客戶銀行資訊" />
+            <End EntitySet="客戶資料" Role="客戶資料" />
+            <End EntitySet="客戶銀行資訊" Role="客戶銀行資訊" />
           </AssociationSet>
           <AssociationSet Name="FK_客戶聯絡人_客戶資料" Association="Self.FK_客戶聯絡人_客戶資料">
-            <End Role="客戶資料" EntitySet="客戶資料" />
-            <End Role="客戶聯絡人" EntitySet="客戶聯絡人" />
+            <End EntitySet="客戶資料" Role="客戶資料" />
+            <End EntitySet="客戶聯絡人" Role="客戶聯絡人" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -134,7 +134,7 @@
           <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="客戶銀行資訊" Relationship="Self.FK_客戶銀行資訊_客戶資料" FromRole="客戶資料" ToRole="客戶銀行資訊" />
           <NavigationProperty Name="客戶聯絡人" Relationship="Self.FK_客戶聯絡人_客戶資料" FromRole="客戶資料" ToRole="客戶聯絡人" />
-          <Property Name="是否已刪除" Type="Boolean" Nullable="false" />
+          <Property Name="是否已刪除" Nullable="false" Type="Boolean" />
         </EntityType>
         <EntityType Name="客戶銀行資訊">
           <Key>
