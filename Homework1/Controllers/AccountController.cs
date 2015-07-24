@@ -22,7 +22,7 @@ namespace Homework1.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +34,9 @@ namespace Homework1.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -120,7 +120,7 @@ namespace Homework1.Controllers
             // 如果使用者輸入不正確的代碼來表示一段指定的時間，則使用者帳戶 
             // 會有一段指定的時間遭到鎖定。 
             // 您可以在 IdentityConfig 中設定帳戶鎖定設定
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -155,8 +155,8 @@ namespace Homework1.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // 如需如何啟用帳戶確認和密碼重設的詳細資訊，請造訪 http://go.microsoft.com/fwlink/?LinkID=320771
                     // 傳送包含此連結的電子郵件
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -234,7 +234,13 @@ namespace Homework1.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            if (code == null)
+            {
+                ViewBag.Msg = "請先登入";
+                return View("Error"); 
+            }
+            else
+            { return View(); }
         }
 
         //

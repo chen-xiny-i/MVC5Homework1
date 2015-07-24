@@ -5,3 +5,16 @@
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+@section breadcrumb {
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home"></i>
+            <a href="@Url.Action("Index", "Home")">Home</a>
+            <i class="icon-angle-right"></i>
+        </li>
+        <li><a href="#">About</a></li>
+    </ul>
+
+}
